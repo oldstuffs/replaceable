@@ -18,7 +18,7 @@ repositories {
 }
 
 dependencies {
-    implementation("io.github.portlek:jsongration:${version}")
+    implementation("io.github.portlek:replaceable:${version}")
 }
 ```
 </details>
@@ -30,7 +30,7 @@ dependencies {
 <dependencies>
     <dependency>
       <groupId>io.github.portlek</groupId>
-      <artifactId>jsongration</artifactId>
+      <artifactId>replaceable</artifactId>
       <version>${version}</version>
     </dependency>
 </dependencies>

@@ -25,6 +25,7 @@
 
 package io.github.portlek.replaceable;
 
+import io.github.portlek.mapentry.MapEntry;
 import io.github.portlek.replaceable.rp.RpList;
 import io.github.portlek.replaceable.rp.RpString;
 import java.util.*;

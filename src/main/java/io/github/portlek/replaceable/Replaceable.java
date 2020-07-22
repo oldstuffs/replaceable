@@ -102,6 +102,11 @@ public interface Replaceable<S extends Replaceable<S, X>, X> {
     }
 
     @NotNull
+    default X build(@NotNull final Map.Entry<String, Supplier<String>> entry) {
+        return this.build(Collections.singletonList(entry));
+    }
+
+    @NotNull
     default X build(@NotNull final Map.Entry<String, Supplier<String>>... entries) {
         return this.build(Arrays.asList(entries));
     }

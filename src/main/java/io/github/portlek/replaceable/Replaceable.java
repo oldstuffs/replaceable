@@ -33,6 +33,7 @@ import java.util.concurrent.atomic.AtomicReference;
 import java.util.function.Function;
 import java.util.function.Supplier;
 import java.util.function.UnaryOperator;
+import java.util.stream.Collectors;
 import org.jetbrains.annotations.NotNull;
 
 public interface Replaceable<S extends Replaceable<S, X>, X> {
@@ -96,11 +97,9 @@ public interface Replaceable<S extends Replaceable<S, X>, X> {
     }
 
     @NotNull
-    default X build(@NotNull final Iterable<Map.Entry<String, Supplier<String>>> entries) {
-        final Map<String, Supplier<String>> map = new HashMap<>();
-        entries.forEach(entry ->
-            map.put(entry.getKey(), entry.getValue()));
-        return this.build(map);
+    default X build(@NotNull final Collection<Map.Entry<String, Supplier<String>>> entries) {
+        return this.build(
+            entries.stream().collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue)));
     }
 
     @NotNull

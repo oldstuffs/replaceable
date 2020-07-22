@@ -73,13 +73,13 @@ public interface Replaceable<S extends Replaceable<S, X>, X> {
     }
 
     @NotNull
-    default X build() {
-        return this.build(Collections.emptyMap());
+    default <Y> Y buildMap(@NotNull final Function<X, Y> function) {
+        return function.apply(this.build());
     }
 
     @NotNull
-    default <Y> Y buildMap(@NotNull final Function<X, Y> function) {
-        return function.apply(this.build());
+    default X build() {
+        return this.build(Collections.emptyMap());
     }
 
     @NotNull

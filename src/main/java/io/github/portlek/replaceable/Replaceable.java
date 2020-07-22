@@ -79,8 +79,7 @@ public interface Replaceable<S extends Replaceable<S, X>, X> {
 
     @NotNull
     default <Y> Y buildMap(@NotNull final Function<X, Y> function) {
-        final X built = this.build();
-        return function.apply(built);
+        return function.apply(this.build());
     }
 
     @NotNull

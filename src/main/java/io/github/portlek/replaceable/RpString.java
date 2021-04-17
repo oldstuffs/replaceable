@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2020 Hasan Demirtaş
+ * Copyright (c) 2021 Hasan Demirtaş
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,38 +23,63 @@
  *
  */
 
-package io.github.portlek.replaceable.rp;
+package io.github.portlek.replaceable;
 
-import java.util.List;
-import java.util.concurrent.atomic.AtomicReference;
 import java.util.function.Supplier;
-import java.util.stream.Collectors;
 import org.jetbrains.annotations.NotNull;
 
-public final class RpList extends RpEnvelope<RpList, List<String>> {
+/**
+ * an implementation of {@link RpBase} for {@link String}.
+ */
+public final class RpString extends RpBase<RpString, String> {
 
-    public RpList(@NotNull final List<String> value) {
-        super(value);
-    }
+  /**
+   * ctor.
+   */
+  private RpString(@NotNull final String value) {
+    super(value);
+  }
 
-    @NotNull
-    @Override
-    public RpList self() {
-        return this;
-    }
+  /**
+   * creates a replaceable string instance.
+   *
+   * @param builder the builder to create.
+   *
+   * @return a newly created replaceable string.
+   */
+  @NotNull
+  public static RpString from(@NotNull final StringBuilder builder) {
+    return RpString.from(builder.toString());
+  }
 
-    @NotNull
-    @Override
-    public Supplier<RpList> newSelf(@NotNull final List<String> value) {
-        return () -> new RpList(value);
-    }
+  /**
+   * creates a replaceable string instance.
+   *
+   * @param text the text to create.
+   *
+   * @return a newly created replaceable string.
+   */
+  @NotNull
+  public static RpString from(@NotNull final String text) {
+    return new RpString(text);
+  }
 
-    @Override
-    public void replace(@NotNull final AtomicReference<List<String>> value, @NotNull final CharSequence regex,
+  @NotNull
+  @Override
+  public Supplier<RpString> newSelf(@NotNull final String value) {
+    return () -> RpString.from(value);
+  }
+
+  @NotNull
+  @Override
+  public String replace(@NotNull final String value, @NotNull final CharSequence regex,
                         @NotNull final CharSequence replace) {
-        value.set(value.get().stream()
-            .map(s -> s.replace(regex, replace))
-            .collect(Collectors.toList()));
-    }
+    return value.replace(regex, replace);
+  }
 
+  @NotNull
+  @Override
+  public RpString self() {
+    return this;
+  }
 }

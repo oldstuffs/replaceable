@@ -246,6 +246,31 @@ public abstract class RpBase<S extends RpBase<S, X>, X> {
   }
 
   /**
+   * adds the given regex to {@link #regex}.
+   *
+   * @param regex the regex to add.
+   *
+   * @return {@code this} for builder chain.
+   */
+  @NotNull
+  public final S regex(@NotNull final Collection<String> regex) {
+    this.regex.addAll(regex);
+    return this.self();
+  }
+
+  /**
+   * adds the given regex to {@link #regex}.
+   *
+   * @param regex the regex to add.
+   *
+   * @return {@code this} for builder chain.
+   */
+  @NotNull
+  public final S regex(@NotNull final String... regex) {
+    return this.regex(Arrays.asList(regex));
+  }
+
+  /**
    * adds the given replaces to {@link #replaces}.
    *
    * @param replaces the replaces to add.
@@ -284,31 +309,6 @@ public abstract class RpBase<S extends RpBase<S, X>, X> {
   @NotNull
   public final S replace(@NotNull final String regex, @NotNull final Supplier<String> replace) {
     return this.replace(Collections.singletonMap(regex, replace));
-  }
-
-  /**
-   * adds the given regex to {@link #regex}.
-   *
-   * @param regex the regex to add.
-   *
-   * @return {@code this} for builder chain.
-   */
-  @NotNull
-  public final S regex(@NotNull final Collection<String> regex) {
-    this.regex.addAll(regex);
-    return this.self();
-  }
-
-  /**
-   * adds the given regex to {@link #regex}.
-   *
-   * @param regex the regex to add.
-   *
-   * @return {@code this} for builder chain.
-   */
-  @NotNull
-  public final S regex(@NotNull final String... regex) {
-    return this.regex(Arrays.asList(regex));
   }
 
   /**

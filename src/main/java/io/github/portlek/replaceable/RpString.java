@@ -35,6 +35,8 @@ public final class RpString extends RpBase<RpString, String> {
 
   /**
    * ctor.
+   *
+   * @param value the value.
    */
   private RpString(@NotNull final String value) {
     super(value);

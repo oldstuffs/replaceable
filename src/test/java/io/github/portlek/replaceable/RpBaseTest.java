@@ -27,6 +27,7 @@ package io.github.portlek.replaceable;
 
 import io.github.portlek.mapentry.MapEntry;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.function.Supplier;
 import java.util.function.UnaryOperator;
@@ -49,7 +50,7 @@ final class RpBaseTest {
     new Assertion<>(
       "Couldn't build correctly.",
       RpString.from("test %test%")
-        .replaces("%test%")
+        .regex("%test%")
         .build(MapEntry.from("%test%", () -> "1")),
       new IsEqual<>("test 1")
     ).affirm();
@@ -65,7 +66,7 @@ final class RpBaseTest {
     new Assertion<>(
       "Couldn't build correctly.",
       RpString.from("test %test%")
-        .replaces("%test%")
+        .regex("%test%")
         .buildMap(s -> s + "-1", Map.of("%test%", () -> "1")),
       new IsEqual<>("test 1-1")
     ).affirm();
@@ -87,7 +88,7 @@ final class RpBaseTest {
   void getRegex() {
     final var regex = "%regex%";
     final var original = RpString.from("")
-      .replaces("%regex%");
+      .regex("%regex%");
     new Assertion<>(
       "Couldn't get the regex.",
       original.getRegex(),
@@ -145,6 +146,14 @@ final class RpBaseTest {
 
   @Test
   void replaces() {
+    final var original = RpString.from("")
+      .regex("test-1")
+      .regex(List.of("test-2"));
+    new Assertion<>(
+      "Couldn't add the replace.",
+      original.getRegex(),
+      new HasSize(2)
+    ).affirm();
   }
 
   @Test
@@ -152,11 +161,11 @@ final class RpBaseTest {
     final var map = (UnaryOperator<String>) s -> s;
     final var replace = (Supplier<String>) () -> "test";
     final var original = RpString.from("test")
-      .replaces("%test%")
+      .regex("%test%")
       .map(map)
       .replace("%text%", replace);
     final var expected = RpString.from("test-2")
-      .replaces("%test%")
+      .regex("%test%")
       .map(map)
       .replace("%text%", replace);
     new Assertion<>(

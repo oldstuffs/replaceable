@@ -294,7 +294,7 @@ public abstract class RpBase<S extends RpBase<S, X>, X> {
    * @return {@code this} for builder chain.
    */
   @NotNull
-  public final S replaces(@NotNull final Collection<String> regex) {
+  public final S regex(@NotNull final Collection<String> regex) {
     this.regex.addAll(regex);
     return this.self();
   }
@@ -307,8 +307,8 @@ public abstract class RpBase<S extends RpBase<S, X>, X> {
    * @return {@code this} for builder chain.
    */
   @NotNull
-  public final S replaces(@NotNull final String... regex) {
-    return this.replaces(Arrays.asList(regex));
+  public final S regex(@NotNull final String... regex) {
+    return this.regex(Arrays.asList(regex));
   }
 
   /**
@@ -321,7 +321,7 @@ public abstract class RpBase<S extends RpBase<S, X>, X> {
   @NotNull
   public final S value(@NotNull final X value) {
     return this.newSelf(value).get()
-      .replaces(this.getRegex())
+      .regex(this.getRegex())
       .replace(this.getReplaces())
       .map(this.getMaps());
   }

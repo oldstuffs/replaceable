@@ -299,7 +299,7 @@ public abstract class RpBase<S extends RpBase<S, X>, X> {
   }
 
   /**
-   * adds the given replaces to {@link #replaces}
+   * adds the given replaces to {@link #replaces}.
    *
    * @param regex the regex to add.
    * @param replace the replace to add.

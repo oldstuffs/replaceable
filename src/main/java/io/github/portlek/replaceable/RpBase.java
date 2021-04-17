@@ -31,6 +31,7 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.concurrent.atomic.AtomicReference;
@@ -103,8 +104,8 @@ public abstract class RpBase<S extends RpBase<S, X>, X> {
    */
   @NotNull
   public final X build(@NotNull final Collection<Map.Entry<String, Supplier<String>>> entries) {
-    return this.build(
-      entries.stream().collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue)));
+    return this.build(entries.stream()
+      .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue)));
   }
 
   /**
@@ -170,6 +171,22 @@ public abstract class RpBase<S extends RpBase<S, X>, X> {
   }
 
   /**
+   * builds the replacement object with the given function and replaces.
+   *
+   * @param function the function to build.
+   * @param replaces the replaces to build.
+   * @param <Y> type of the value.
+   *
+   * @return built value.
+   */
+  @SafeVarargs
+  @NotNull
+  public final <Y> Y buildMap(@NotNull final Function<X, Y> function,
+                              @NotNull final Map.Entry<String, Supplier<String>>... replaces) {
+    return function.apply(this.build(replaces));
+  }
+
+  /**
    * builds the replaceable object with the given function.
    *
    * @param function the function to build.
@@ -216,15 +233,16 @@ public abstract class RpBase<S extends RpBase<S, X>, X> {
   }
 
   /**
-   * adds the given map to {@link #maps}.
+   * adds the given maps to {@link #maps}.
    *
-   * @param map the map to add.
+   * @param maps the maps to add.
    *
    * @return {@code this} for builder chain.
    */
+  @SafeVarargs
   @NotNull
-  public final S map(@NotNull final UnaryOperator<X> map) {
-    return this.map(Collections.singletonList(map));
+  public final S map(@NotNull final UnaryOperator<X>... maps) {
+    return this.map(List.of(maps));
   }
 
   /**

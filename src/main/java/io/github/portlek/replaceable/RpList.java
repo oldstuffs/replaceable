@@ -38,6 +38,8 @@ public final class RpList extends RpBase<RpList, List<String>> {
 
   /**
    * ctor.
+   *
+   * @param value the value.
    */
   private RpList(@NotNull final List<String> value) {
     super(value);

@@ -342,6 +342,8 @@ public abstract class RpBase<S extends RpBase<S, X>, X> {
    * @param value the value to replace.
    * @param regex the regex to replace.
    * @param replace the replace to replace.
+   *
+   * @return replaced value.
    */
   @NotNull
   protected abstract X replace(@NotNull X value, @NotNull CharSequence regex, @NotNull CharSequence replace);

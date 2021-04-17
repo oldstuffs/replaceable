@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2020 Hasan Demirtaş
+ * Copyright (c) 2021 Hasan Demirtaş
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -22,35 +22,7 @@
  * SOFTWARE.
  *
  */
-
-package io.github.portlek.replaceable.rp;
-
-import java.util.concurrent.atomic.AtomicReference;
-import java.util.function.Supplier;
-import org.jetbrains.annotations.NotNull;
-
-public final class RpString extends RpEnvelope<RpString, String> {
-
-    public RpString(@NotNull final String value) {
-        super(value);
-    }
-
-    @NotNull
-    @Override
-    public RpString self() {
-        return this;
-    }
-
-    @NotNull
-    @Override
-    public Supplier<RpString> newSelf(final String value) {
-        return () -> new RpString(value);
-    }
-
-    @Override
-    public void replace(@NotNull final AtomicReference<String> value, @NotNull final CharSequence regex,
-                        @NotNull final CharSequence replace) {
-        value.set(value.get().replace(regex, replace));
-    }
-
-}
+/**
+ * the package contains main classes.
+ */
+package io.github.portlek.replaceable;

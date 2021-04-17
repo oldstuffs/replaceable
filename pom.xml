@@ -1,31 +1,55 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ~ MIT License
+  ~
+  ~ Copyright (c) 2021 Hasan Demirtaş
+  ~
+  ~ Permission is hereby granted, free of charge, to any person obtaining a copy
+  ~ of this software and associated documentation files (the "Software"), to deal
+  ~ in the Software without restriction, including without limitation the rights
+  ~ to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+  ~ copies of the Software, and to permit persons to whom the Software is
+  ~ furnished to do so, subject to the following conditions:
+  ~
+  ~ The above copyright notice and this permission notice shall be included in all
+  ~ copies or substantial portions of the Software.
+  ~
+  ~ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  ~ IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  ~ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+  ~ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  ~ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+  ~ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+  ~ SOFTWARE.
+  ~
+  -->
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <modelVersion>4.0.0</modelVersion>
-    <parent>
-        <artifactId>ppom</artifactId>
-        <groupId>io.github.portlek</groupId>
-        <version>2.3.11</version>
-    </parent>
-    <artifactId>replaceable</artifactId>
-    <version>1.0-SNAPSHOT</version>
-    <name>replaceable</name>
-    <description>A simple Java library that allows you to edit texts.</description>
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>io.github.portlek</groupId>
+    <artifactId>ppom</artifactId>
+    <version>2.3.11</version>
+  </parent>
+  <artifactId>replaceable</artifactId>
+  <version>1.0-SNAPSHOT</version>
+  <name>replaceable</name>
+  <description>A simple Java library that allows you to edit texts.</description>
+  <url>https://github.com/portlek/replaceable</url>
+  <scm>
     <url>https://github.com/portlek/replaceable</url>
-
-    <scm>
-        <connection>scm:git:git://github.com/portlek/replaceable.git</connection>
-        <developerConnection>scm:git:ssh://github.com/portlek/replaceable.git</developerConnection>
-        <url>https://github.com/portlek/replaceable</url>
-    </scm>
-
-    <dependencies>
-        <dependency>
-            <groupId>io.github.portlek</groupId>
-            <artifactId>mapentry</artifactId>
-            <version>2.0.10</version>
-        </dependency>
-    </dependencies>
-
+    <connection>scm:git:git://github.com/portlek/replaceable.git</connection>
+    <developerConnection>scm:git:ssh://github.com/portlek/replaceable.git</developerConnection>
+  </scm>
+  <properties>
+    <java.version>11</java.version>
+  </properties>
+  <dependencies>
+    <dependency>
+      <groupId>io.github.portlek</groupId>
+      <artifactId>mapentry</artifactId>
+      <version>2.0.10</version>
+    </dependency>
+  </dependencies>
 </project>

@@ -60,14 +60,14 @@ public final class RpString extends RpBase<RpString, String> {
    * @return a newly created replaceable string.
    */
   @NotNull
-  private static RpString from(@NotNull final String text) {
+  public static RpString from(@NotNull final String text) {
     return new RpString(text);
   }
 
   @NotNull
   @Override
   public Supplier<RpString> newSelf(@NotNull final String value) {
-    return () -> new RpString(value);
+    return () -> RpString.from(value);
   }
 
   @NotNull

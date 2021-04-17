@@ -29,6 +29,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.function.Supplier;
 import java.util.stream.Collectors;
+import lombok.EqualsAndHashCode;
 import org.jetbrains.annotations.NotNull;
 
 /**

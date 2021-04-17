@@ -275,7 +275,7 @@ public abstract class RpBase<S extends RpBase<S, X>, X> {
    *
    * @param value the value to create.
    *
-   * @return a newly created instance of {@link S} with {@link #getRegex()}, {@link #getReplaces()}, {@link #getMaps()}.
+   * @return a newly created instance of {@link S} with {@link #regex}, {@link #replaces}, {@link #maps}.
    */
   @NotNull
   public final S value(@NotNull final X value) {

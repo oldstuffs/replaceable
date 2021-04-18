@@ -25,7 +25,6 @@
 
 package io.github.portlek.replaceable;
 
-import io.github.portlek.mapentry.MapEntry;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -51,7 +50,7 @@ final class RpBaseTest {
       "Couldn't build correctly.",
       RpString.from("test %test%")
         .regex("%test%")
-        .build(MapEntry.from("%test%", () -> "1")),
+        .build(Map.entry("%test%", () -> "1")),
       new IsEqual<>("test 1")
     ).affirm();
   }
@@ -135,7 +134,7 @@ final class RpBaseTest {
   void replace() {
     final var original = RpString.from("")
       .replace("test-1", () -> "test-1")
-      .replace(MapEntry.from("test-2", () -> "test-2"))
+      .replace(Map.entry("test-2", () -> "test-2"))
       .replace(Map.of("test-3", () -> "test-3"));
     new Assertion<>(
       "Couldn't add the replace.",

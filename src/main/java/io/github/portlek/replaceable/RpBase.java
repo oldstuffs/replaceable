@@ -25,7 +25,6 @@
 
 package io.github.portlek.replaceable;
 
-import io.github.portlek.mapentry.MapEntry;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
@@ -130,7 +129,7 @@ public abstract class RpBase<S extends RpBase<S, X>, X> {
    */
   @NotNull
   public final X build(@NotNull final String regex, @NotNull final Supplier<String> replace) {
-    return this.build(MapEntry.from(regex, replace));
+    return this.build(Map.entry(regex, replace));
   }
 
   /**

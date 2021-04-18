@@ -45,13 +45,6 @@
   <properties>
     <java.version>11</java.version>
   </properties>
-  <dependencies>
-    <dependency>
-      <groupId>io.github.portlek</groupId>
-      <artifactId>mapentry</artifactId>
-      <version>2.0.10</version>
-    </dependency>
-  </dependencies>
   <profiles>
     <profile>
       <build>

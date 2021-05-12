@@ -32,12 +32,12 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Objects;
 import java.util.concurrent.atomic.AtomicReference;
 import java.util.function.Function;
 import java.util.function.Supplier;
 import java.util.function.UnaryOperator;
 import java.util.stream.Collectors;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.ToString;
@@ -49,8 +49,9 @@ import org.jetbrains.annotations.NotNull;
  * @param <S> type of the implementation itself.
  * @param <X> type of the value.
  */
-@RequiredArgsConstructor
 @ToString
+@EqualsAndHashCode
+@RequiredArgsConstructor
 public abstract class RpBase<S extends RpBase<S, X>, X> {
 
   /**
@@ -196,26 +197,6 @@ public abstract class RpBase<S extends RpBase<S, X>, X> {
   @NotNull
   public final <Y> Y buildMap(@NotNull final Function<X, Y> function) {
     return function.apply(this.build());
-  }
-
-  @Override
-  public final int hashCode() {
-    return Objects.hash(this.maps, this.regex, this.replaces, this.value);
-  }
-
-  @Override
-  public final boolean equals(final Object obj) {
-    if (this == obj) {
-      return true;
-    }
-    if (obj == null || !RpBase.class.isAssignableFrom(obj.getClass())) {
-      return false;
-    }
-    final var rpBase = (RpBase<?, ?>) obj;
-    return this.maps.equals(rpBase.maps) &&
-      this.regex.equals(rpBase.regex) &&
-      this.replaces.equals(rpBase.replaces) &&
-      this.value.equals(rpBase.value);
   }
 
   /**

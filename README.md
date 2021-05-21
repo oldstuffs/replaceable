@@ -1,7 +1,7 @@
 [![idea](https://www.elegantobjects.org/intellij-idea.svg)](https://www.jetbrains.com/idea/)
 
-![master](https://github.com/portlek/bukkit-location/workflows/build/badge.svg)
-[![Release](https://jitpack.io/v/portlek/bukkit-location.svg)](https://jitpack.io/#portlek/bukkit-location)
+![master](https://github.com/portlek/replaceable/workflows/build/badge.svg)
+[![Release](https://jitpack.io/v/portlek/replaceable.svg)](https://jitpack.io/#portlek/replaceable)
 
 ## How to Use
 

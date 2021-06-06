@@ -71,4 +71,16 @@ final class RpStringTest {
       new IsEqual<>(original.self())
     );
   }
+
+  @Test
+  void testFromObjects() {
+    new Assertion<>(
+      "Couldn't created replaceable string correctly.",
+      RpString.fromObject(new StringBuilder()
+        .append("test")
+        .append('\n')
+        .append("test")),
+      new IsEqual<>(RpString.from("test\ntest"))
+    ).affirm();
+  }
 }

@@ -45,6 +45,15 @@ final class RpListTest {
   }
 
   @Test
+  void fromObjects() {
+    new Assertion<>(
+      "Couldn't created replaceable string correctly.",
+      RpList.fromObjects(new StringBuilder("test\ntest")),
+      new IsEqual<>(RpList.from("test\ntest"))
+    ).affirm();
+  }
+
+  @Test
   void newSelf() {
     final var original = RpList.from("test");
     new Assertion<>(
@@ -71,5 +80,14 @@ final class RpListTest {
       original,
       new IsEqual<>(original.self())
     );
+  }
+
+  @Test
+  void testFromObjects() {
+    new Assertion<>(
+      "Couldn't created replaceable string correctly.",
+      RpList.fromObjects(List.of(new StringBuilder("test\ntest"))),
+      new IsEqual<>(RpList.from("test\ntest"))
+    ).affirm();
   }
 }

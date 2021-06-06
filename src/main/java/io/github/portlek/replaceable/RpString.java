@@ -25,6 +25,7 @@
 
 package io.github.portlek.replaceable;
 
+import java.util.Objects;
 import java.util.function.Supplier;
 import org.jetbrains.annotations.NotNull;
 
@@ -52,6 +53,18 @@ public final class RpString extends RpBase<RpString, String> {
   @NotNull
   public static RpString from(@NotNull final StringBuilder builder) {
     return RpString.from(builder.toString());
+  }
+
+  /**
+   * creates a replaceable string instance.
+   *
+   * @param object the object to create.
+   *
+   * @return a newly created replaceable string.
+   */
+  @NotNull
+  public static RpString from(@NotNull final Object object) {
+    return RpString.from(Objects.toString(object));
   }
 
   /**

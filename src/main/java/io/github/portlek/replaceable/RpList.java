@@ -49,30 +49,6 @@ public final class RpList extends RpBase<RpList, List<String>> {
   /**
    * creates a replaceable list instance.
    *
-   * @param objects the objects to create.
-   *
-   * @return a newly created replaceable list.
-   */
-  @NotNull
-  public static RpList from(@NotNull final Object... objects) {
-    return RpList.from(Arrays.stream(objects).map(Objects::toString).collect(Collectors.toList()));
-  }
-
-  /**
-   * creates a replaceable list instance.
-   *
-   * @param list the list to create.
-   *
-   * @return a newly created replaceable list.
-   */
-  @NotNull
-  public static RpList from(@NotNull final List<Object> list) {
-    return from(list.stream().map(Objects::toString).collect(Collectors.toList()));
-  }
-
-  /**
-   * creates a replaceable list instance.
-   *
    * @param texts the texts to create.
    *
    * @return a newly created replaceable list.
@@ -106,6 +82,30 @@ public final class RpList extends RpBase<RpList, List<String>> {
     return RpList.from(Arrays.stream(builders)
       .map(StringBuilder::toString)
       .collect(Collectors.toList()));
+  }
+
+  /**
+   * creates a replaceable list instance.
+   *
+   * @param list the list to create.
+   *
+   * @return a newly created replaceable list.
+   */
+  @NotNull
+  public static RpList fromObjects(@NotNull final List<Object> list) {
+    return RpList.from(list.stream().map(Objects::toString).collect(Collectors.toList()));
+  }
+
+  /**
+   * creates a replaceable list instance.
+   *
+   * @param objects the objects to create.
+   *
+   * @return a newly created replaceable list.
+   */
+  @NotNull
+  public static RpList fromObjects(@NotNull final Object... objects) {
+    return RpList.fromObjects(List.of(objects));
   }
 
   @NotNull

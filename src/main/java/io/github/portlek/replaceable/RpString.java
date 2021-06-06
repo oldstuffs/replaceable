@@ -58,18 +58,6 @@ public final class RpString extends RpBase<RpString, String> {
   /**
    * creates a replaceable string instance.
    *
-   * @param object the object to create.
-   *
-   * @return a newly created replaceable string.
-   */
-  @NotNull
-  public static RpString from(@NotNull final Object object) {
-    return RpString.from(Objects.toString(object));
-  }
-
-  /**
-   * creates a replaceable string instance.
-   *
    * @param text the text to create.
    *
    * @return a newly created replaceable string.
@@ -77,6 +65,18 @@ public final class RpString extends RpBase<RpString, String> {
   @NotNull
   public static RpString from(@NotNull final String text) {
     return new RpString(text);
+  }
+
+  /**
+   * creates a replaceable string instance.
+   *
+   * @param object the object to create.
+   *
+   * @return a newly created replaceable string.
+   */
+  @NotNull
+  public static RpString fromObject(@NotNull final Object object) {
+    return RpString.from(Objects.toString(object));
   }
 
   @NotNull

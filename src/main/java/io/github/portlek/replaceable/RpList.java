@@ -67,7 +67,7 @@ public final class RpList extends RpBase<RpList, List<String>> {
    */
   @NotNull
   public static RpList from(@NotNull final List<Object> list) {
-    return from(list.map(Objects::toString).collect(Collectors.toList()));
+    return from(list.stream().map(Objects::toString).collect(Collectors.toList()));
   }
 
   /**
